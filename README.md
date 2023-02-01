@@ -10,6 +10,31 @@ Using the code in the repo will require having the following tools installed:
 - The Terraform CLI
 - The OC CLI
 - Azure CLI
+- Azure subscription and setup azure
+
+## AZURE INITIAL SETUP
+```bash
+# Authenticate to Azure using the Azure CLI (it redirects you to the default browser on your machine to log in):
+az login
+
+# List all available Azure regions and find the one closest to you:
+az account list-locations -o table
+
+# Set the default region for Azure CLI:
+az config set defaults.location=canadacentral
+
+# If you have multiple Azure subscriptions, specify the relevant subscription ID:
+az account set --subscription <SUBSCRIPTION_ID>
+
+# Register the `Microsoft.RedHatOpenShift` resource provider:
+az provider register -n Microsoft.RedHatOpenShift --wait
+
+# Register the `Microsoft.Compute` resource provider:
+az provider register -n Microsoft.Compute --wait
+
+# Register the `Microsoft.Storage` resource provider:
+az provider register -n Microsoft.Storage --wait
+   ```
 
 ## Create the ARO cluster and required infrastructure
 
